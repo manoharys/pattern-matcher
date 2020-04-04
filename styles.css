@@ -1,14 +1,18 @@
-*{
+* {
     box-sizing: border-box;
+padding: 0;
+margin:0;
 }
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
 }
-h1{
+
+h1 {
     text-align: center;
 }
-.container{
+
+.container {
     display: flex;
     flex-direction: column;
     height: 70vh;
@@ -16,20 +20,23 @@ h1{
     align-items: center;
 }
 
-.gameArea{
+.gameArea {
     width: 300px;
     height: 300px;
     border: 1px solid black;
 }
 
-.boxes{
-    width: 150px;
-    height: 150px;
-    border: 1px solid red;
+.boxes {
+    width: 50%;
+    height: 50%;
+    color: black;
+    text-align: center;
     display: inline-block;
+    margin-top: -2px;
+
 }
 
-button{
+button {
     padding: 5px 30px 5px 30px;
     margin-top: 1rem;
     background-color: green;
@@ -37,6 +44,6 @@ button{
     color: white;
 }
 
-button:hover{
-    color:black;
+button:hover {
+    color: black;
 }
