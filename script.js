@@ -13,21 +13,25 @@ let playNum = 1;
 window.addEventListener("load", setUp);
 button.addEventListener('click', function () {
     //console.log("clicked");
-    player();
+
+    if (!inplay) {
+        player();
+
+    }
 })
 
 ///player function
 
 function player() {
-    if (!inplay) {
-        button.style.display = "none";
-        Message("Match pattern")
-        button.disabled = true;
-        userClicks = [];
-        gameClicks = [];
-        runSequence(playNum);
-    }
+
+    button.style.display = "none";
+    Message("Match pattern")
+    // button.disabled = true;
+    userClicks = [];
+    gameClicks = [];
+    runSequence(playNum);
 }
+
 
 ///runSequence function
 function runSequence(num) {
@@ -38,7 +42,7 @@ function runSequence(num) {
     }
     let squares = document.querySelectorAll('.boxes');
     //console.log(squares);
-    let randomNum = Math.floor(Math.random() * squares.length);
+    let randomNum = Math.floor(Math.random() * colors.length);
     //console.log(randomNum);
     squares[randomNum].style.opacity = "1";
     gameClicks.push(colors[randomNum]);
@@ -75,13 +79,14 @@ function checkAnswer(e) {
         setTimeout(function () {
             ele.style.opacity = ".6";
         }, 500);
+        if (gameClicks.length == userClicks.length) { //if the length matchs the game ends or moves to the next level..
+            inplay = false;
+            endgame();
+        }
     }
     //console.log(ele.myColors);
     //console.log(userClicks);
-    if (gameClicks.length == userClicks.length) { //if the length matchs the game ends or moves to the next level..
-        inplay = false;
-        endgame();
-    }
+
 }
 
 ///function which creates the child elements 
@@ -97,9 +102,11 @@ function endgame() {
         Message("CORRECT!!  " + " level" + playNum);
         button.style.display = "block";
         button.style.disabled = false;
-    
+
     } else {
-        Message("INCORRECT!")
+        Message("INCORRECT!");
+        button.style.display = "block";
+        // button.style.disabled = false;
     }
 }
 
