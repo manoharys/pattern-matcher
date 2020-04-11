@@ -51,8 +51,11 @@ function checkAnswer(e) {
     let ele;
     if (inplay) {
         ele = e.target;
-
         userClicks.push(ele.myColors);
+        ele.style.opacity = "1";
+        setTimeout(function () {
+            ele.style.opacity = ".6";
+        }, 500);
     }
     console.log(ele.myColors);
     console.log(userClicks);
