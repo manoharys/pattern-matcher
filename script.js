@@ -7,12 +7,12 @@ const colors = ['green', 'blue', 'red', 'orange'];
 let userClicks = [];
 let gameClicks = [];
 let inplay = false;
-let playNum = 4;
+let playNum = 1;
 
 //Event listners..
 window.addEventListener("load", setUp);
 button.addEventListener('click', function () {
-    console.log("clicked");
+    //console.log("clicked");
     player();
 })
 
@@ -20,7 +20,9 @@ button.addEventListener('click', function () {
 
 function player() {
     if (!inplay) {
-        button.disabled = "true";
+        button.style.display = "none";
+        Message("Match pattern")
+        button.disabled = true;
         userClicks = [];
         gameClicks = [];
         runSequence(playNum);
@@ -35,12 +37,12 @@ function runSequence(num) {
         return;
     }
     let squares = document.querySelectorAll('.boxes');
-    console.log(squares);
+    //console.log(squares);
     let randomNum = Math.floor(Math.random() * squares.length);
-    console.log(randomNum);
+    //console.log(randomNum);
     squares[randomNum].style.opacity = "1";
     gameClicks.push(colors[randomNum]);
-    console.log(gameClicks);
+    // console.log(gameClicks);
     setTimeout(function () {
         squares[randomNum].style.opacity = "0.6";
         setTimeout(function () {
@@ -74,11 +76,34 @@ function checkAnswer(e) {
             ele.style.opacity = ".6";
         }, 500);
     }
-    console.log(ele.myColors);
-    console.log(userClicks);
+    //console.log(ele.myColors);
+    //console.log(userClicks);
+    if (gameClicks.length == userClicks.length) { //if the length matchs the game ends or moves to the next level..
+        inplay = false;
+        endgame();
+    }
 }
 
+///function which creates the child elements 
 function createElement(div) {
     let el = document.createElement(div);
     return el;
+}
+
+//EndGame function..
+function endgame() {
+    if (userClicks.toString() == gameClicks.toString()) {
+        playNum++;
+        Message("CORRECT!!  " + " level" + playNum);
+        button.style.display = "block";
+        button.style.disabled = false;
+    
+    } else {
+        Message("INCORRECT!")
+    }
+}
+
+//Message function to display the output over different contents
+function Message(mes) {
+    message.innerHTML = mes;
 }
