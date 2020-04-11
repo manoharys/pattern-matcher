@@ -40,7 +40,9 @@ h1 {
 
 
 }
-
+.boxes:hover{
+    cursor: pointer;
+}
 button {
     padding: 8px 30px 8px 30px;
     margin-top: 1rem;

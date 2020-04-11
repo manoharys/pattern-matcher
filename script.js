@@ -114,3 +114,5 @@ function endgame() {
 function Message(mes) {
     message.innerHTML = mes;
 }
+
+
