@@ -23,13 +23,28 @@ function player() {
         button.disabled = "true";
         userClicks = [];
         gameClicks = [];
-        runSequence();
+        runSequence(playNum);
     }
 }
 
 ///runSequence function
-function runSequence() {
-    inplay = true;
+function runSequence(num) {
+    num--;
+    if (num < 0) {
+        inplay = true;
+        return;
+    }
+    let squares = document.querySelectorAll('.boxes');
+    console.log(squares);
+    let randomNum = Math.floor(Math.random() * squares.length);
+    console.log(randomNum);
+    squares[randomNum].style.opacity = "1";
+    gameClicks.push(colors[randomNum]);
+    console.log(gameClicks);
+    setTimeout(function () {
+        squares[randomNum].style.opacity = "0.6";
+
+    }, 500);
 }
 
 //Function setUp for dynamically creating the elements and adding eventListeners respectively...
