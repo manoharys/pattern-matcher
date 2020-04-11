@@ -7,7 +7,7 @@ const colors = ['green', 'blue', 'red', 'orange'];
 let userClicks = [];
 let gameClicks = [];
 let inplay = false;
-let playNum = 1;
+let playNum = 4;
 
 //Event listners..
 window.addEventListener("load", setUp);
@@ -43,7 +43,9 @@ function runSequence(num) {
     console.log(gameClicks);
     setTimeout(function () {
         squares[randomNum].style.opacity = "0.6";
-
+        setTimeout(function () {
+            runSequence(num);
+        }, 200);
     }, 500);
 }
 
