@@ -1,15 +1,18 @@
 * {
     box-sizing: border-box;
-padding: 0;
-margin:0;
+    padding: 0;
+    margin: 0;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(0, 0, 0);
+    color: lavender;
 }
 
 h1 {
     text-align: center;
+    color: lavender;
 }
 
 .container {
@@ -24,6 +27,8 @@ h1 {
     width: 300px;
     height: 300px;
     border: 1px solid black;
+    padding: 5px;
+    background-color: grey;
 }
 
 .boxes {
@@ -31,13 +36,13 @@ h1 {
     height: 50%;
     color: black;
     text-align: center;
-    display: inline-block;
-    margin-top: -2px;
+    display: inline-flex;
+
 
 }
 
 button {
-    padding: 5px 30px 5px 30px;
+    padding: 8px 30px 8px 30px;
     margin-top: 1rem;
     background-color: green;
     font-weight: bold;
@@ -46,4 +51,5 @@ button {
 
 button:hover {
     color: black;
+    cursor: pointer;
 }

@@ -1,22 +1,61 @@
 const message = document.querySelector(".message");
 const gameArea = document.querySelector(".gameArea");
 const button = document.querySelector("button");
+const colors = ['green', 'blue', 'red', 'orange'];
 
-console.log(message);
-console.log(gameArea);
-console.log(button);
+//Global variables
+let userClicks = [];
+let gameClicks = [];
+let inplay = false;
+let playNum = 1;
 
+//Event listners..
 window.addEventListener("load", setUp);
-const colors = ['green', 'blue', 'yellow', 'orange'];
+button.addEventListener('click', function () {
+    console.log("clicked");
+    player();
+})
 
-function setUp() {
-    for (let i = 0; i < colors.length; i++) {
-        let element = createElement("div");
-        element.style.backgroundColor=colors[i];
-        element.classList.add('boxes');
-        gameArea.appendChild(element);
-   
+///player function
+
+function player() {
+    if (!inplay) {
+        button.disabled = "true";
+        userClicks = [];
+        gameClicks = [];
+        runSequence();
     }
+}
+
+///runSequence function
+function runSequence() {
+    inplay = true;
+}
+
+//Function setUp for dynamically creating the elements and adding eventListeners respectively...
+function setUp() {
+    let element;
+
+    for (let i = 0; i < colors.length; i++) {
+        element = createElement("div");
+        element.style.backgroundColor = colors[i];
+        element.classList.add('boxes');
+        element.myColors = colors[i];
+        element.addEventListener("click", checkAnswer);
+        gameArea.appendChild(element);
+        element.style.opacity = "0.6";
+    }
+}
+
+function checkAnswer(e) {
+    let ele;
+    if (inplay) {
+        ele = e.target;
+
+        userClicks.push(ele.myColors);
+    }
+    console.log(ele.myColors);
+    console.log(userClicks);
 }
 
 function createElement(div) {
